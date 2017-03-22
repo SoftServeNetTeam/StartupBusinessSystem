@@ -1,0 +1,9 @@
+﻿@model IEnumerable<StartupBusinessSystem.Models.User>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach (var item in Model)
+{
+    <div>@item.Email</div>
+}
