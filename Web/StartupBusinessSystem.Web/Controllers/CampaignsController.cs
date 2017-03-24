@@ -37,6 +37,18 @@ namespace StartupBusinessSystem.Web.Controllers
                 return this.View(model);
             }
 
+            if (model.GoalPrice % 10 != 0)
+            {
+                this.ModelState.AddModelError(string.Empty, "Goal Price must be divisible by 10");
+                return this.View(model);
+            }
+
+            if (model.Shares % 5 != 0)
+            {
+                this.ModelState.AddModelError(string.Empty, "Shares must be divisible by 5");
+                return this.View(model);
+            }
+
             var currentUserId = this.User.Identity.GetUserId();
             var currentUser = this.users.GetById(currentUserId);
 
