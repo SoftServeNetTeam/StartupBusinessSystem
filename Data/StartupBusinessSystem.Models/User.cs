@@ -27,6 +27,9 @@
         [MaxLength(100)]
         public string Address { get; set; }
 
+        [MaxLength(250)]
+        public string Description { get; set; }
+
         public virtual ICollection<Participation> Participations
         {
             get

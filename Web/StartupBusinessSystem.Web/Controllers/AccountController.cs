@@ -159,7 +159,8 @@
                     Email = model.Email,
                     CompanyIdentityNumber = model.CompanyIdentityNumber,
                     Address = model.Address,
-                    PhoneNumber = model.Phone
+                    PhoneNumber = model.Phone,
+                    Description = model.Description
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

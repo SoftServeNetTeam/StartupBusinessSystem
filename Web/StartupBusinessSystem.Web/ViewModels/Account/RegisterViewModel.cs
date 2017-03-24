@@ -26,6 +26,10 @@
         [Display(Name = "Phone")]
         public string Phone { get; set; }
 
+        [MaxLength(250)]
+        [Display(Name = "Company Description")]
+        public string Description { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]

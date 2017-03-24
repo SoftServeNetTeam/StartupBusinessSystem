@@ -13,7 +13,7 @@
         [Key]
         public int Id { get; set; }
 
-        public bool IsAccepted { get; set; }
+        public ParticipationStatus Status { get; set; }
 
         public int SharesOwned { get; set; }
 

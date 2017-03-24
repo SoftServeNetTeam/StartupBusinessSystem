@@ -11,7 +11,7 @@
 
         public Campaign()
         {
-            this.UnitPerShare = this.GoalPrice / this.Shares;
+            //this.UnitPerShare = this.GoalPrice / this.Shares;
             this.participations = new HashSet<Participation>();
             this.CreatedOn = DateTime.Now;
         }
@@ -31,10 +31,15 @@
         [Range(0, int.MaxValue)]
         public int Shares { get; set; }
 
+        public CampaignStatus Status { get; set; }
+
         public DateTime CreatedOn { get; private set; }
 
         [NotMapped]
-        public int UnitPerShare { get; private set; }
+        public int UnitPerShare
+        {
+            get { return this.GoalPrice / this.Shares; }
+        }
 
         public string UserId { get; set; }
 
