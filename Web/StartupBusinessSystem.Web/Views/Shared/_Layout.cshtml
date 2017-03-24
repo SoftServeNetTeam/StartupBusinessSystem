@@ -23,7 +23,16 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Add Startup", "Create", "Campaigns")</li>
                     <li>@Html.ActionLink("Startups", "All", "Campaigns")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Company Profile", "CompanyProfile", "Profile")</li>
+                            <li>@Html.ActionLink("Company Startups", "Create", "Campaigns")</li>
+                            <li>@Html.ActionLink("Participations", "All", "Campaigns")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
