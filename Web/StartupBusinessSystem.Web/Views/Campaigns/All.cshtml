@@ -1,4 +1,4 @@
-﻿@model StartupBusinessSystem.Web.ViewModels.Campaigns.CampaignsListViewModel
+﻿@model StartupBusinessSystem.Web.ViewModels.Campaigns.ListCampaignsViewModel
 @{
     ViewBag.Title = "All";
 }
@@ -7,16 +7,6 @@
 
 <div class="container">
     <div class="row">
-        @*@foreach (var campaign in Model.CampaignsList)
-            {
-                <div class="col-md-6">
-                    <h2><a href="/Campaigns/Details/@campaign.Id">@campaign.Name</a></h2>
-                    <h2>@campaign.Description</h2>
-                    <h2>@campaign.CreatedOn</h2>
-                    <h2>@campaign.GoalPrice</h2>
-                    <h2>@campaign.Status</h2>
-                </div>
-            }*@
 
         @foreach (var campaign in Model.CampaignsList)
         {
@@ -24,12 +14,10 @@
                 <article>
                     <header>
                         <h2>
-                            @Html.ActionLink(@campaign.Name, "Campaigns", "Detalis", new { @id = campaign.Id }, null)
+                            @Html.ActionLink(@campaign.Name, "Details", "Campaigns", new { @id = campaign.Id }, null)
                         </h2>
                     </header>
-                    @*<p>
-                            @campaign.Description
-                        </p>*@
+
                     <footer>
                         <div class="pull-right">
                             <p>Status: @campaign.Status</p>

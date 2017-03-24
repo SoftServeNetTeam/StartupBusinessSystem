@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class CampaignsListViewModel
+    public class ListCampaignsViewModel
     {
         public int CurrentPage { get; set; }
 

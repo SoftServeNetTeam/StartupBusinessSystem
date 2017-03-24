@@ -46,7 +46,7 @@
                 })
                 .ToList();
 
-            var campaignsViewModel = new CampaignsListViewModel
+            var campaignsViewModel = new ListCampaignsViewModel
             {
                 CurrentPage = page,
                 PagesCount = allPagesCount,
@@ -99,6 +99,35 @@
             this.campaigns.SaveChanges();
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var campaign = this.campaigns.GetById(id);
+
+            if (campaign == null)
+            {
+                return HttpNotFound();
+            }
+
+            var campaignsViewModel = new DetailsCampaignViewModel
+            {
+                Name = campaign.Name,
+                Status = campaign.Status,
+                Description = campaign.Description,
+                CreatedOn = campaign.CreatedOn,
+                GoalPrice = campaign.GoalPrice,
+                Shares = campaign.Shares,
+                UnitPerShare = campaign.UnitPerShare,
+                CompanyDescription = campaign.User.Description,
+                CompanyName = campaign.User.UserName,
+                CompanyAddress = campaign.User.Address,
+                CompanyEmail = campaign.User.Email,
+                CompanyPhone = campaign.User.PhoneNumber
+            };
+
+            return this.View(campaignsViewModel);
         }
 
     }

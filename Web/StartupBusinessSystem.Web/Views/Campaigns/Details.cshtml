@@ -1,0 +1,45 @@
+﻿@model StartupBusinessSystem.Web.ViewModels.Campaigns.DetailsCampaignViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 jumbotron">
+            <h2>Startup Information</h2>
+            <hr />
+            <p>Name: @Model.Name</p>
+            <p>Description: @Model.Description </p>
+            <p>Goal price: @Model.GoalPrice</p>
+            <p>Price per share: @Model.UnitPerShare </p>
+            <p>Created on: @Model.CreatedOn </p>
+            <p>Status: @Model.Status </p>
+
+            <div class="progress progress-striped active">
+                <div class="progress-bar" style="width: 20%"></div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+        </div>
+
+
+        <div class="col-md-5 jumbotron">
+            <h2>Company Information</h2>
+            <hr/>
+            <p>Name: @Model.CompanyName </p>
+            <p>Description: @Model.CompanyDescription</p>
+            <p>Phone: @Model.CompanyPhone </p>
+            <p>Address: @Model.CompanyAddress </p>
+            <p>Email: @Model.CompanyEmail </p>
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-default"> Participate </a>
+
+</div>
