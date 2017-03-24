@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace StartupBusinessSystem.Web.Controllers
+﻿namespace StartupBusinessSystem.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
+
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Campaigns;
@@ -21,6 +20,41 @@ namespace StartupBusinessSystem.Web.Controllers
         {
             this.campaigns = campaigns;
             this.users = users;
+        }
+
+        [HttpGet]
+        public ActionResult All(int page = 1, int size = 5)
+        {
+            var campaignsCount = this.campaigns.All().Count();
+
+            var allPagesCount = (int)Math.Ceiling(campaignsCount / (decimal)size);
+
+            var campaigns = this.campaigns
+                .All()
+                .OrderBy(c => c.CreatedOn)
+                .Skip((page - 1) * size)
+                .Take(size)
+                .Select(c => new CampaignViewModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    GoalPrice = c.GoalPrice,
+                    CreatedOn = c.CreatedOn,
+                    UsernameAsString = c.User.UserName,
+                    Status = c.Status
+                })
+                .ToList();
+
+            var campaignsViewModel = new CampaignsListViewModel
+            {
+                CurrentPage = page,
+                PagesCount = allPagesCount,
+                PageSize = size,
+                CampaignsList = campaigns
+            };
+
+            return this.View(campaignsViewModel);
         }
 
         [HttpGet]
