@@ -29,16 +29,19 @@
         public int GoalPrice { get; set; }
 
         [Range(0, int.MaxValue)]
-        public int Shares { get; set; }
+        public int CurrentShares { get; set; }
+
+        [Range(0, int.MaxValue)]
+        public int TotalShares { get; set; }
 
         public CampaignStatus Status { get; set; }
 
         public DateTime CreatedOn { get; private set; }
 
         [NotMapped]
-        public int UnitPerShare
+        public int PricePerShare
         {
-            get { return this.GoalPrice / this.Shares; }
+            get { return this.GoalPrice / this.TotalShares; }
         }
 
         public string UserId { get; set; }
