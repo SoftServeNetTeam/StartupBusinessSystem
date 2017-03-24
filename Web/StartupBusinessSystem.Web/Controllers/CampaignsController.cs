@@ -92,8 +92,7 @@
                 User = currentUser,
                 Description = model.Description,
                 GoalPrice = model.GoalPrice,
-                TotalShares = model.Shares,
-                CurrentShares = model.Shares                
+                Shares = model.Shares
             };
 
             this.campaigns.Add(campaign);
@@ -114,14 +113,13 @@
 
             var campaignsViewModel = new DetailsCampaignViewModel
             {
-                Id = campaign.Id,
                 Name = campaign.Name,
                 Status = campaign.Status,
                 Description = campaign.Description,
                 CreatedOn = campaign.CreatedOn,
                 GoalPrice = campaign.GoalPrice,
-                Shares = campaign.TotalShares,
-                UnitPerShare = campaign.PricePerShare,
+                Shares = campaign.Shares,
+                UnitPerShare = campaign.UnitPerShare,
                 CompanyDescription = campaign.User.Description,
                 CompanyName = campaign.User.UserName,
                 CompanyAddress = campaign.User.Address,

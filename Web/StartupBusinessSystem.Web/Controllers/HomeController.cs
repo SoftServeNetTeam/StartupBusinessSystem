@@ -20,9 +20,13 @@
         }
 
         public ActionResult Index()
-        {            
+        {
+            var user = this.users.All().FirstOrDefault(u => u.Email == "goshov@abv.bg");
             var collection = this.users.All().ToList();
-            
+
+            //var collection = this.users.All().Select(u => new UserViewModel{
+            //Email = u.Email
+            //}).ToList();
 
             return View(collection);
         }

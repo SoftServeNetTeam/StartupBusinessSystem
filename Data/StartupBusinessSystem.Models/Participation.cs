@@ -15,8 +15,6 @@
 
         public ParticipationStatus Status { get; set; }
 
-        public int MakeOffer { get; set; }
-
         public int SharesOwned { get; set; }
 
         public DateTime CreatedOn { get; private set; }
