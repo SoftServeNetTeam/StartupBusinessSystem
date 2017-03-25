@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNet.Identity;
-using StartupBusinessSystem.Data.Repositories;
-using StartupBusinessSystem.Models;
-using StartupBusinessSystem.Web.ViewModels.Participations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿namespace StartupBusinessSystem.Web.Controllers
 
-namespace StartupBusinessSystem.Web.Controllers
 {
+    using System;    
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Collections.Generic;
+
+    using Microsoft.AspNet.Identity;
+
+    using StartupBusinessSystem.Models;
+    using StartupBusinessSystem.Data.Repositories;    
+    using StartupBusinessSystem.Web.ViewModels.Participations;
+    
+    
+
     [Authorize]
     public class ParticipationsController : Controller
     {
