@@ -1,5 +1,6 @@
 ﻿namespace StartupBusinessSystem.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using Microsoft.AspNet.Identity;
@@ -47,21 +48,30 @@
         }
 
         [HttpGet]
-        public ActionResult ParticipationDetails(int id)
+        public ActionResult ParticipationDetails()
         {
-            var participations = this.participations.GetById(id);
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var participations = this.participations
+                .All()
+                .Where(p =>p.User.Id == currentUserId)
+                .OrderBy(p => p.SharesOwned)
+                .Select(p => new ParticipationDetailsViewModel
+                {
+                    Campaign = p.Campaign,
+                    User = p.User,
+                    SharesOwned = p.SharesOwned,
+                    MakeOffer = p.MakeOffer,
+                    Status = p.Status
+                })
+            .ToList();
 
             if (participations == null)
             {
                 return HttpNotFound();
             }
 
-            var participationDetailsViewModel = new ParticipationDetailsViewModel
-            {
-                Campaign = participations.Campaign,
-                Status = participations.Status
-            };
-            return View(participationDetailsViewModel);
+            return this.View(participations);
         }
     }
 }
