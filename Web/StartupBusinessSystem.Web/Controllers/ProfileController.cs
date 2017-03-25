@@ -1,7 +1,5 @@
 ﻿namespace StartupBusinessSystem.Web.Controllers
 {
-    using System;
-    using System.Linq;
     using System.Web.Mvc;
 
     using Microsoft.AspNet.Identity;
@@ -9,17 +7,21 @@
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Profile;
-    
+
 
     [Authorize]
     public class ProfileController : Controller
     {
         private IRepository<User> users;
+        private IRepository<Campaign> campaigns;
+        private IRepository<Participation> participations;
 
-        public ProfileController(IRepository<User> users)
-        {            
-            this.users = users;           
-        }       
+        public ProfileController(IRepository<User> users, IRepository<Campaign> campaigns, IRepository<Participation> participations)
+        {
+            this.users = users;
+            this.campaigns = campaigns;
+            this.participations = participations;
+        }
 
         [HttpGet]
         public ActionResult CompanyProfile()
@@ -44,5 +46,22 @@
             return View(companyProfileViewModel);
         }
 
+        [HttpGet]
+        public ActionResult ParticipationDetails(int id)
+        {
+            var participations = this.participations.GetById(id);
+
+            if (participations == null)
+            {
+                return HttpNotFound();
+            }
+
+            var participationDetailsViewModel = new ParticipationDetailsViewModel
+            {
+                Campaign = participations.Campaign,
+                Status = participations.Status
+            };
+            return View(participationDetailsViewModel);
+        }
     }
 }
