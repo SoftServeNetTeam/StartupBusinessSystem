@@ -211,6 +211,7 @@
     <Compile Include="ViewModels\Campaigns\CampaignViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\CreateCampaignViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\DetailsCampaignViewModel.cs" />
+    <Compile Include="ViewModels\Campaigns\ManageCampaignViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Participations\AcceptParticipationViewModel.cs" />
     <Compile Include="ViewModels\Participations\CreateParticipationViewModel.cs" />
     <Compile Include="ViewModels\Profile\CompanyProfileViewModel.cs" />
     <Compile Include="ViewModels\Profile\ListParticipationsViewModel.cs" />
@@ -288,6 +290,7 @@
     <Content Include="Views\Participations\AddToCampaign.cshtml" />
     <Content Include="Views\Profile\MyParticipations.cshtml" />
     <Content Include="Views\Profile\MyStartups.cshtml" />
+    <Content Include="Views\Campaigns\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

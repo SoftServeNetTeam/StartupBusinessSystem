@@ -1,11 +1,6 @@
 ﻿namespace StartupBusinessSystem.Web.Controllers
-
 {
-    using System;    
-    using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using System.Collections.Generic;
 
     using Microsoft.AspNet.Identity;
 
@@ -13,8 +8,6 @@
     using StartupBusinessSystem.Data.Repositories;    
     using StartupBusinessSystem.Web.ViewModels.Participations;
     
-    
-
     [Authorize]
     public class ParticipationsController : Controller
     {
@@ -32,7 +25,6 @@
         [HttpGet]
         public ActionResult AddToCampaign(int id)
         {
-
             var campaign = this.campaigns.GetById(id);
 
             if (campaign == null)
@@ -85,8 +77,6 @@
             this.participations.SaveChanges();
 
             return this.RedirectToAction("Index", "Home");
-
         }
-
     }
 }

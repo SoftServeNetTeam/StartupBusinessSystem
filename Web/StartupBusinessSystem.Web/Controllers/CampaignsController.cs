@@ -9,16 +9,19 @@
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Campaigns;
+    using ViewModels.Participations;
 
     [Authorize]
     public class CampaignsController : Controller
     {
         private IRepository<Campaign> campaigns;
+        private IRepository<Participation> participations;
         private IRepository<User> users;
 
-        public CampaignsController(IRepository<Campaign> campaigns, IRepository<User> users)
+        public CampaignsController(IRepository<Campaign> campaigns, IRepository<User> users, IRepository<Participation> participations)
         {
             this.campaigns = campaigns;
+            this.participations = participations;
             this.users = users;
         }
 
@@ -93,7 +96,7 @@
                 Description = model.Description,
                 GoalPrice = model.GoalPrice,
                 TotalShares = model.Shares,
-                CurrentShares = model.Shares                
+                CurrentShares = model.Shares
             };
 
             this.campaigns.Add(campaign);
@@ -132,5 +135,67 @@
             return this.View(campaignsViewModel);
         }
 
+        [HttpGet]
+        public ActionResult Manage(int id)
+        {
+            var currentCampaign = this.campaigns.GetById(id);
+            var campaignParticipations = currentCampaign
+                .Participations
+                .OrderBy(p => p.CreatedOn)
+                .Where(p => p.Status == ParticipationStatus.Pending)
+                .Select(p => new AcceptParticipationViewModel
+                {
+                    Id = p.Id,
+                    CreatedOn = p.CreatedOn,
+                    Status = p.Status,
+                    MakeOffer = p.MakeOffer
+                })
+                .ToList();
+
+            var campaignsManageViewModel = new ManageCampaignViewModel
+            {
+                AllPendingParticipations = campaignParticipations
+            };
+
+            return this.View(campaignsManageViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Manage(int id, ManageCampaignViewModel model)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var currentUser = this.users.GetById(userId);
+
+            var campaign = this.campaigns.GetById(id);
+            var participation = campaign.Participations.FirstOrDefault(p => p.Id == model.ParticipationId);
+
+            if (model.isAccepted == true)
+            {
+                if (model.SharesGivenToUser > participation.MakeOffer)
+                {
+                    return this.PartialView("Error");
+                }
+
+                participation.Status = ParticipationStatus.Accepted;
+                participation.SharesOwned = model.SharesGivenToUser;
+
+                this.participations.Update(participation);
+                this.participations.SaveChanges();
+
+                campaign.CurrentShares -= model.SharesGivenToUser;
+
+                this.campaigns.Update(campaign);
+                this.campaigns.SaveChanges();
+            }
+            else
+            {
+                participation.Status = ParticipationStatus.Refused;
+
+                this.participations.Update(participation);
+                this.participations.SaveChanges();
+            }
+
+            return this.RedirectToAction("Manage", new {id = id });
+        }
     }
 }

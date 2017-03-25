@@ -3,7 +3,9 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
+
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Campaigns;
@@ -44,6 +46,7 @@
                 CompanyEmail = user.Email,
                 CompanyPhone = user.PhoneNumber
             };
+
             return this.View(companyProfileViewModel);
         }
 
@@ -52,6 +55,7 @@
         {
             var currentUserId = this.User.Identity.GetUserId();
             var currentUser = this.users.GetById(currentUserId);
+
             var participationsCount = currentUser.Participations.Count;
             var allPagesCount = (int)Math.Ceiling(participationsCount / (decimal)size);
 
@@ -77,11 +81,6 @@
                 ParticipationsList = userParticipations
             };
 
-            if (this.participations == null)
-            {
-                return this.HttpNotFound();
-            }
-
             return this.View(participationsViewModel);
         }
 
@@ -96,8 +95,8 @@
             }
 
             var currentUser = this.users.GetById(currentUserId);
-            var campaignsCount = currentUser.Campaigns.Count;
-         
+
+            var campaignsCount = currentUser.Campaigns.Count;        
             var allPagesCount = (int)Math.Ceiling(campaignsCount / (decimal)size);
 
             var userCampaigns = currentUser
