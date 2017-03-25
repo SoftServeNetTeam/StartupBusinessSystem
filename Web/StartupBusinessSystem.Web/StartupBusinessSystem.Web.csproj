@@ -225,6 +225,7 @@
     <Compile Include="ViewModels\Participations\AcceptParticipationViewModel.cs" />
     <Compile Include="ViewModels\Participations\CreateParticipationViewModel.cs" />
     <Compile Include="ViewModels\Profile\CompanyProfileViewModel.cs" />
+    <Compile Include="ViewModels\Profile\EditProfileViewModel.cs" />
     <Compile Include="ViewModels\Profile\ListParticipationsViewModel.cs" />
     <Compile Include="ViewModels\Profile\ParticipationDetailsViewModel.cs" />
   </ItemGroup>
@@ -291,6 +292,7 @@
     <Content Include="Views\Profile\MyParticipations.cshtml" />
     <Content Include="Views\Profile\MyStartups.cshtml" />
     <Content Include="Views\Campaigns\Manage.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

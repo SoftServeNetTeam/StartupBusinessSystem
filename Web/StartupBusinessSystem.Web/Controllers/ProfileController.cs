@@ -51,6 +51,45 @@
         }
 
         [HttpGet]
+        public ActionResult Edit()
+        {
+            var userId = this.User.Identity.GetUserId();
+            var user = this.users.GetById(userId);
+
+            var viewModel = new EditProfileViewModel
+            {
+                CompanyName = user.UserName,
+                CompanyDescription = user.Description,
+                CompanyPhone = user.PhoneNumber,
+                CompanyAddress = user.Address
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            var user = this.users.GetById(userId);
+
+            user.UserName = model.CompanyName;
+            user.Description = model.CompanyDescription;
+            user.PhoneNumber = model.CompanyPhone;
+            user.Address = model.CompanyAddress;
+
+            this.users.Update(user);
+            this.users.SaveChanges();
+
+            return RedirectToAction("CompanyProfile");
+        }
+
+        [HttpGet]
         public ActionResult MyParticipations(int page = 1, int size = 5)
         {
             var currentUserId = this.User.Identity.GetUserId();
