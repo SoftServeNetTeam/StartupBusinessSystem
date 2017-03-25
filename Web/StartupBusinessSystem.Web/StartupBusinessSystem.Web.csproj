@@ -223,6 +223,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Participations\CreateParticipationViewModel.cs" />
     <Compile Include="ViewModels\Profile\CompanyProfileViewModel.cs" />
+    <Compile Include="ViewModels\Profile\ListParticipationsViewModel.cs" />
     <Compile Include="ViewModels\Profile\ParticipationDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -285,7 +286,7 @@
     <Content Include="Views\Campaigns\Details.cshtml" />
     <Content Include="Views\Profile\CompanyProfile.cshtml" />
     <Content Include="Views\Participations\AddToCampaign.cshtml" />
-    <Content Include="Views\Profile\ParticipationDetails.cshtml" />
+    <Content Include="Views\Profile\MyParticipations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

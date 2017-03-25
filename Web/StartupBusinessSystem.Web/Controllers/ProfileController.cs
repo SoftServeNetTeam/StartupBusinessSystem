@@ -1,23 +1,22 @@
 ﻿namespace StartupBusinessSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
-
     using Microsoft.AspNet.Identity;
-
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Profile;
 
-
     [Authorize]
     public class ProfileController : Controller
     {
-        private IRepository<User> users;
         private IRepository<Campaign> campaigns;
         private IRepository<Participation> participations;
+        private IRepository<User> users;
 
-        public ProfileController(IRepository<User> users, IRepository<Campaign> campaigns, IRepository<Participation> participations)
+        public ProfileController(IRepository<User> users, IRepository<Campaign> campaigns,
+            IRepository<Participation> participations)
         {
             this.users = users;
             this.campaigns = campaigns;
@@ -32,7 +31,7 @@
 
             if (user == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
             var companyProfileViewModel = new CompanyProfileViewModel
@@ -44,18 +43,40 @@
                 CompanyEmail = user.Email,
                 CompanyPhone = user.PhoneNumber
             };
-            return View(companyProfileViewModel);
+            return this.View(companyProfileViewModel);
         }
 
         [HttpGet]
-        public ActionResult ParticipationDetails()
+        public ActionResult MyParticipations(int page = 1, int size = 1)
         {
             var currentUserId = this.User.Identity.GetUserId();
+            var currentUser = this.users.GetById(currentUserId);
 
-            var participations = this.participations
-                .All()
-                .Where(p =>p.User.Id == currentUserId)
+            var participationsCount = currentUser.Participations.Count;
+
+            var allPagesCount = (int)Math.Ceiling(participationsCount / (decimal)size);
+
+
+            //var participations = this.participations
+            //    .All()
+            //    .Where(p => p.User.Id == currentUserId)
+            //    .OrderBy(p => p.SharesOwned)
+            //    .Skip((page - 1) * size)
+            //    .Take(size)
+            //    .Select(p => new ParticipationDetailsViewModel
+            //    {
+            //        Campaign = p.Campaign,
+            //        User = p.User,
+            //        SharesOwned = p.SharesOwned,
+            //        MakeOffer = p.MakeOffer,
+            //        Status = p.Status
+            //    })
+            //.ToList();
+
+            var userParticipations = currentUser.Participations
                 .OrderBy(p => p.SharesOwned)
+                .Skip((page - 1) * size)
+                .Take(size)
                 .Select(p => new ParticipationDetailsViewModel
                 {
                     Campaign = p.Campaign,
@@ -64,14 +85,22 @@
                     MakeOffer = p.MakeOffer,
                     Status = p.Status
                 })
-            .ToList();
+                .ToList();
 
-            if (participations == null)
+            var participationsViewModel = new ListParticipationsViewModel
             {
-                return HttpNotFound();
+                CurrentPage = page,
+                PagesCount = allPagesCount,
+                PageSize = size,
+                ParticipationsList = userParticipations
+            };
+
+            if (this.participations == null)
+            {
+                return this.HttpNotFound();
             }
 
-            return this.View(participations);
+            return this.View(participationsViewModel);
         }
     }
 }
