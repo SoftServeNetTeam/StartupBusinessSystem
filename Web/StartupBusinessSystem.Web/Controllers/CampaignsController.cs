@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
 
     using Microsoft.AspNet.Identity;
@@ -140,6 +141,12 @@
         public ActionResult Manage(int id)
         {
             var currentCampaign = this.campaigns.GetById(id);
+
+            if (currentCampaign.User.UserName != this.User.Identity.Name)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
+
             var campaignParticipations = currentCampaign
                 .Participations
                 .OrderBy(p => p.CreatedOn)
@@ -198,5 +205,6 @@
 
             return this.RedirectToAction("Manage", new {id = id });
         }
+
     }
 }
