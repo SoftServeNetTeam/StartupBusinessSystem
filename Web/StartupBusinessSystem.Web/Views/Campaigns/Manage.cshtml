@@ -7,9 +7,9 @@
 
 @foreach (var item in Model.AllPendingParticipations)
 {
-     {
+    {
         Model.ParticipationId = item.Id;
-     }
+    }
     <div>Company name: @item.CompanyName</div>
     <div>Shares offered: @item.OfferedShares</div>
     using (Html.BeginForm("Manage", "Campaigns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -28,28 +28,54 @@
         <div class="form-group">
             @Html.LabelFor(m => m.SharesGivenToUser, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.SharesGivenToUser, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.SharesGivenToUser, new { oninput = "makeButtonInactive(" + item.OfferedShares + ", " + item.Id + ")", id = "text-form-" + @item.Id, @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SharesGivenToUser)
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.isAccepted, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.isAccepted, "Accept", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.CheckBoxFor(m => m.isAccepted)
+                @Html.RadioButtonFor(m => m.isAccepted, "true", new { onchange = "makeTextBoxActive(" + item.Id + ")" })
                 @Html.ValidationMessageFor(m => m.isAccepted)
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(m => m.isAccepted, "Refuse", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(m => m.isAccepted, "false", new { onchange = "makeTextBoxInactive(" + item.Id + ")" })
+                @Html.ValidationMessageFor(m => m.isAccepted)
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Add Startup" />
+                <input type="submit" id="submit-button-@item.Id" class="btn btn-default" value="Submit" />
             </div>
         </div>
     }
 }
 
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function makeButtonInactive(maxPrice, id) {
+            let sum = document.getElementById("text-form-" + id).value;
+            let calck = parseInt(sum);
+            if (calck < 1 || calck > maxPrice) {
+                document.getElementById("submit-button-" + id).disabled = true;
+            } else {
+                document.getElementById("submit-button-" + id).disabled = false;
+            }
+        }
+
+        function makeTextBoxActive(id) {
+            document.getElementById("text-form-" + id).disabled = false;
+        }
+
+        function makeTextBoxInactive(id) {
+            document.getElementById("submit-button-" + id).disabled = false;
+            document.getElementById("text-form-" + id).value = "";
+            document.getElementById("text-form-" + id).disabled = true;
+        }
+    </script>
 }
