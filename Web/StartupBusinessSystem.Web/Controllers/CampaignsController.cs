@@ -165,13 +165,15 @@
                     Id = p.Id,
                     CreatedOn = p.CreatedOn,
                     Status = p.Status,
-                    MakeOffer = p.MakeOffer
+                    MakeOffer = p.MakeOffer,
+                    CompanyName = p.User.UserName,
+                    OfferedShares = p.MakeOffer
                 })
                 .ToList();
 
             var campaignsManageViewModel = new ManageCampaignViewModel
             {
-                AllPendingParticipations = campaignParticipations
+                AllPendingParticipations = campaignParticipations,
             };
 
             return this.View(campaignsManageViewModel);

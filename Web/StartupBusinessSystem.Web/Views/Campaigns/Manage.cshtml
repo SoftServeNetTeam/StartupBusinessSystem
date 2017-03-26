@@ -10,7 +10,8 @@
      {
         Model.ParticipationId = item.Id;
      }
-
+    <div>Company name: @item.CompanyName</div>
+    <div>Shares offered: @item.OfferedShares</div>
     using (Html.BeginForm("Manage", "Campaigns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
