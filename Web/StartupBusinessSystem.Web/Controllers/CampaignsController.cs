@@ -131,6 +131,8 @@
                 CompanyAddress = campaign.User.Address,
                 CompanyEmail = campaign.User.Email,
                 CompanyPhone = campaign.User.PhoneNumber,
+                CampaignCurrentShares = campaign.CurrentShares,
+                CampaignTotalShares = campaign.TotalShares
             };
 
             return this.View(campaignsViewModel);

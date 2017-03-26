@@ -30,5 +30,10 @@
         public string CompanyEmail { get; set; }
 
         public string CompanyAddress { get; set; }
+
+        public int CampaignCurrentShares { get; set; }
+
+        public int CampaignTotalShares { get; set; }
+
     }
 }
