@@ -12,15 +12,21 @@
 
         @foreach (var campaign in Model.CampaignsList)
         {
-            <div class="jumbotron col-lg-12">
-                <article>
-                    <header>
-                        <h2>
+            <div class="panel panel-info">
+               
+                    <header class="panel-heading">
+                        <h2 class="panel-title">
                             @Html.ActionLink(@campaign.Name, "Details", "Campaigns", new { @id = campaign.Id }, null)
                         </h2>
                     </header>
-                    <footer>
-                        <div class="pull-right">
+                    <div class="panel-body">
+                        <div class="container col-md-9 col-xs-12">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@campaign.Id">Description</button>
+                            <div id="@campaign.Id" class="collapse">
+                                <h4>@campaign.Description</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
                             <p>Status: @campaign.Status</p>
                             <p>Goal Price: @campaign.GoalPrice</p>
                             <p>@campaign.CreatedOn.Day.@campaign.CreatedOn.Month.@campaign.CreatedOn.Year</p>
@@ -28,14 +34,9 @@
                                 --Created By @campaign.UsernameAsString
                             </small>
                         </div>
-                    </footer>
-                    <div class="container">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@campaign.Id">Description</button>
-                        <div id="@campaign.Id" class="collapse">
-                            <h4>@campaign.Description</h4>
-                        </div>
                     </div>
-                </article>
+                   
+               
             </div>
         }
     </div>

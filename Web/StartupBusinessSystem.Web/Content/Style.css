@@ -1,0 +1,56 @@
+﻿body {
+    background-color: #e4e2eb;
+    background-image: url('../img/cubes.png');
+    color: #515E65;
+    
+}
+
+a {
+    color: #00B9D9;
+}
+
+a:hover {
+    color: #171B65;
+}
+
+.navbar{
+    margin-bottom: 0;
+}
+
+.navbar .container{
+    border-bottom: 2px solid #171B65;
+}
+
+.dropdown-menu{
+    background-color: rgba(81, 91, 101, 0.9);
+}
+
+.dropdown-menu > li > a{
+    color: #00B9D9;
+}
+
+.dropdown-menu > li > a:hover {
+    background: #00B9D9;
+}
+
+.imghead{
+    background: url('../img/first page.jpg') no-repeat;
+    background-size: cover;
+    min-height: 530px;
+    background-position: center;
+}
+
+.imghead h2 {
+    padding-top: 20px;
+    color: white;
+}
+
+.sideicon .fa {
+    font-size: 10em;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;    
+    height: 35px;   
+}

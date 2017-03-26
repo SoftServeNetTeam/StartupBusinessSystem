@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My Startup Business System</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/modernizr")    
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,13 +44,17 @@
             </div>
         </div>
     </div>
+    
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+              
+        <footer class="footer">
+
             <p>&copy; @DateTime.Now.Year - My Startup Business System</p>
         </footer>
+        
     </div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
