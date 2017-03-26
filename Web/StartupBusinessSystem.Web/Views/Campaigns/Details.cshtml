@@ -39,7 +39,12 @@
             <p>Email: @Model.CompanyEmail </p>
         </div>
     </div>
+    @{
+        if (!Model.IsOwner(User.Identity.Name))
+        {
+            <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-default"> Participate </a>
+        }
+    }
 
-    <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-default"> Participate </a>
 
 </div>

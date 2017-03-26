@@ -129,7 +129,8 @@
                 CompanyName = campaign.User.UserName,
                 CompanyAddress = campaign.User.Address,
                 CompanyEmail = campaign.User.Email,
-                CompanyPhone = campaign.User.PhoneNumber
+                CompanyPhone = campaign.User.PhoneNumber,
+                Owner = campaign.User
             };
 
             return this.View(campaignsViewModel);
