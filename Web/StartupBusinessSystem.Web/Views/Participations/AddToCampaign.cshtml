@@ -3,46 +3,59 @@
     ViewBag.Title = "AddToCampaign";
 }
 
-<h2>Make Offer to @Model.Name</h2>
+<br />
+<h2 class="text-center">Startup: @Model.Name</h2>
+<hr />
 
-<h2>Current Shares @Model.CurrentShares from @Model.TotalShares</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2>Available Shares @Model.CurrentShares from @Model.TotalShares</h2>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width:@((Model.CurrentShares*100)/Model.TotalShares)%"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Make offer to @Model.OwnerName</h3>
+                @using (Html.BeginForm("AddToCampaign", "Participations", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            @Html.ValidationSummary(true)
+                        </div>
+                    }
 
-<div class="progress progress-striped active">
-    <div class="progress-bar" style="width:@((Model.CurrentShares*100)/Model.TotalShares)%"></div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MakeOffer, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.MakeOffer, new { oninput = "calculate(" + Model.PricePerShare + ", " + Model.CurrentShares + ")", id = "first", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MakeOffer)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Price (EUR):</label>
+                        <div class="col-md-3">
+                            <span id="showResult" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" id="submit-button" value="Make Offer" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
-
-@using (Html.BeginForm("AddToCampaign", "Participations", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <hr />
-    if (!ViewData.ModelState.IsValid)
-    {
-        <div class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            @Html.ValidationSummary(true)
-        </div>
-    }
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.MakeOffer, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.MakeOffer, new { oninput = "calculate(" + Model.PricePerShare + ", " + Model.CurrentShares + ")", id = "first", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MakeOffer)
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Total Price:</label>
-        <div class="col-md-3">
-            <div id="showResult" class="form-control"></div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" id="submit-button" value="Make Offer" />
-        </div>
-    </div>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

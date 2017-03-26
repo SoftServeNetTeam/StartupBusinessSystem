@@ -1,9 +1,11 @@
 ﻿@model StartupBusinessSystem.Web.ViewModels.Campaigns.ListCampaignsViewModel
 @{
-    ViewBag.Title = "All";
+    ViewBag.Title = "All Startups";
 }
 
-<h2>All</h2>
+<br />
+<h2>All Startups</h2>
+<br />
 
 <div class="container">
     <div class="row">
@@ -17,7 +19,6 @@
                             @Html.ActionLink(@campaign.Name, "Details", "Campaigns", new { @id = campaign.Id }, null)
                         </h2>
                     </header>
-
                     <footer>
                         <div class="pull-right">
                             <p>Status: @campaign.Status</p>
@@ -31,7 +32,7 @@
                     <div class="container">
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@campaign.Id">Description</button>
                         <div id="@campaign.Id" class="collapse">
-                            <h5>@campaign.Description</h5>
+                            <h4>@campaign.Description</h4>
                         </div>
                     </div>
                 </article>

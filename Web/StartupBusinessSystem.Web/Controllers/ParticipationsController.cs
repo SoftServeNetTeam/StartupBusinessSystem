@@ -5,9 +5,9 @@
     using Microsoft.AspNet.Identity;
 
     using StartupBusinessSystem.Models;
-    using StartupBusinessSystem.Data.Repositories;    
+    using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Web.ViewModels.Participations;
-    
+
     [Authorize]
     public class ParticipationsController : Controller
     {
@@ -19,7 +19,7 @@
         {
             this.participations = participations;
             this.campaigns = campaigns;
-            this.users = users; 
+            this.users = users;
         }
 
         [HttpGet]
@@ -37,7 +37,8 @@
                 Name = campaign.Name,
                 CurrentShares = campaign.CurrentShares,
                 TotalShares = campaign.TotalShares,
-                PricePerShare = campaign.PricePerShare                
+                PricePerShare = campaign.PricePerShare,
+                OwnerName = campaign.User.UserName
             };
 
             return this.View(participationViewModel);
@@ -70,7 +71,7 @@
             {
                 MakeOffer = model.MakeOffer,
                 Campaign = campaign,
-                User = currentUser,                
+                User = currentUser,
             };
 
             this.participations.Add(participation);
