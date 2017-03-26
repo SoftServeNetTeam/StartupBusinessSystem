@@ -32,7 +32,11 @@
             <p>Email: @Model.CompanyEmail </p>
         </div>
     </div>
-
-    <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-default"> Participate </a>
-
+    @{
+        if (!Model.IsOwner(User.Identity.Name))
+        {
+            <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-default"> Participate </a>
+        }
+    }
+  
 </div>

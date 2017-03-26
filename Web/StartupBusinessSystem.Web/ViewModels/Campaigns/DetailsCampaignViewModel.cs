@@ -35,5 +35,12 @@
 
         public int CampaignTotalShares { get; set; }
 
+        public User Owner { get; set; }
+
+        public bool IsOwner(string name)
+        {
+            return this.Owner.UserName.Equals(name);
+        }
+
     }
 }

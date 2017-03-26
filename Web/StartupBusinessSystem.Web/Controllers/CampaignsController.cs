@@ -132,7 +132,8 @@
                 CompanyEmail = campaign.User.Email,
                 CompanyPhone = campaign.User.PhoneNumber,
                 CampaignCurrentShares = campaign.CurrentShares,
-                CampaignTotalShares = campaign.TotalShares
+                CampaignTotalShares = campaign.TotalShares,
+                Owner = campaign.User
             };
 
             return this.View(campaignsViewModel);
