@@ -131,7 +131,6 @@
                 CompanyAddress = campaign.User.Address,
                 CompanyEmail = campaign.User.Email,
                 CompanyPhone = campaign.User.PhoneNumber,
-                Owner = campaign.User
             };
 
             return this.View(campaignsViewModel);
@@ -140,14 +139,22 @@
         [HttpGet]
         public ActionResult Manage(int id)
         {
-            var currentCampaign = this.campaigns.GetById(id);
+            var userId = this.User.Identity.GetUserId();
+            var currentUser = this.users.GetById(userId);
 
-            if (currentCampaign.User.UserName != this.User.Identity.Name)
+            var campaign = this.campaigns.GetById(id);
+
+            if (campaign == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            if (!currentUser.Campaigns.Contains(campaign))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
 
-            var campaignParticipations = currentCampaign
+            var campaignParticipations = campaign
                 .Participations
                 .OrderBy(p => p.CreatedOn)
                 .Where(p => p.Status == ParticipationStatus.Pending)
@@ -171,11 +178,27 @@
         [HttpPost]
         public ActionResult Manage(int id, ManageCampaignViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("Manage", new { id = id });
+            }
+
             var userId = this.User.Identity.GetUserId();
             var currentUser = this.users.GetById(userId);
 
             var campaign = this.campaigns.GetById(id);
+
+            if (!currentUser.Campaigns.Contains(campaign))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
+
             var participation = campaign.Participations.FirstOrDefault(p => p.Id == model.ParticipationId);
+
+            if (participation == null)
+            {
+                return this.HttpNotFound();
+            }
 
             if (model.isAccepted == true)
             {
@@ -203,7 +226,7 @@
                 this.participations.SaveChanges();
             }
 
-            return this.RedirectToAction("Manage", new {id = id });
+            return this.RedirectToAction("Manage", new { id = id });
         }
 
     }
