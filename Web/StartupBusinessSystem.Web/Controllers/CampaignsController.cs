@@ -220,6 +220,11 @@
 
                 campaign.CurrentShares -= model.SharesGivenToUser;
 
+                if (campaign.CurrentShares == 0)
+                {
+                    campaign.Status = CampaignStatus.Finished;
+                }
+
                 this.campaigns.Update(campaign);
                 this.campaigns.SaveChanges();
             }
