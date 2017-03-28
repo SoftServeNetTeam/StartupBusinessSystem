@@ -18,6 +18,6 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public User ParticipationCreator { get; set; }
+        public string ParticipationCreatorId { get; set; }
     }
 }

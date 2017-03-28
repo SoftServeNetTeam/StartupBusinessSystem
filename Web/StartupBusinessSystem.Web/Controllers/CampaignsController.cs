@@ -191,7 +191,7 @@
                     MakeOffer = p.MakeOffer,
                     CompanyName = p.User.UserName,
                     OfferedShares = p.MakeOffer,
-                    ParticipationCreator = p.User
+                    ParticipationCreatorId = p.User.Id
                 })
                 .ToList();
 
