@@ -17,5 +17,7 @@
         public int MakeOffer { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public User ParticipationCreator { get; set; }
     }
 }

@@ -139,10 +139,9 @@
         }
 
         [HttpGet]
-        public ActionResult CompanyProfile()
+        public ActionResult CompanyProfile(string id)
         {
-            var userId = this.User.Identity.GetUserId();
-            var user = this.users.GetById(userId);
+            var user = this.users.GetById(id);
 
             if (user == null)
             {
@@ -191,7 +190,8 @@
                     Status = p.Status,
                     MakeOffer = p.MakeOffer,
                     CompanyName = p.User.UserName,
-                    OfferedShares = p.MakeOffer
+                    OfferedShares = p.MakeOffer,
+                    ParticipationCreator = p.User
                 })
                 .ToList();
 

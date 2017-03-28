@@ -13,7 +13,7 @@
 
     <div>Company name: @item.CompanyName</div>
     <div>Shares offered: @item.OfferedShares</div>
-    @Html.ActionLink("View Profile", "CompanyProfile", "Campaigns", new { id = item.Id })
+    @Html.ActionLink("View Profile", "CompanyProfile", "Campaigns", new { id = item.ParticipationCreator.Id }, null)
 
     using (Html.BeginForm("Manage", "Campaigns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
