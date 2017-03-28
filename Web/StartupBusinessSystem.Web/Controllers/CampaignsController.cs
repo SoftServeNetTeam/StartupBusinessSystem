@@ -140,6 +140,30 @@
         }
 
         [HttpGet]
+        public ActionResult CompanyProfile()
+        {
+            var userId = this.User.Identity.GetUserId();
+            var user = this.users.GetById(userId);
+
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var companyProfileViewModel = new RequestProfileViewModel
+            {
+                CompanyName = user.UserName,
+                CompanyIDNumber = user.CompanyIdentityNumber,
+                CompanyDescription = user.Description,
+                CompanyAddress = user.Address,
+                CompanyEmail = user.Email,
+                CompanyPhone = user.PhoneNumber
+            };
+
+            return this.View(companyProfileViewModel);
+        }
+
+        [HttpGet]
         public ActionResult Manage(int id)
         {
             var userId = this.User.Identity.GetUserId();

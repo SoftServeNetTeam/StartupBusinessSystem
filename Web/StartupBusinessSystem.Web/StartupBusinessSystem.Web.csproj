@@ -207,6 +207,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Campaigns\RequestProfileViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\ListCampaignsViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\CampaignViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\CreateCampaignViewModel.cs" />
@@ -295,6 +296,7 @@
     <Content Include="Views\Profile\MyStartups.cshtml" />
     <Content Include="Views\Campaigns\Manage.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Campaigns\CompanyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
