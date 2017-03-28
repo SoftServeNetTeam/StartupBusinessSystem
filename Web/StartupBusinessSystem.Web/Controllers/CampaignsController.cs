@@ -198,6 +198,7 @@
             var campaignsManageViewModel = new ManageCampaignViewModel
             {
                 AllPendingParticipations = campaignParticipations,
+                isAccepted = true
             };
 
             return this.View(campaignsManageViewModel);
