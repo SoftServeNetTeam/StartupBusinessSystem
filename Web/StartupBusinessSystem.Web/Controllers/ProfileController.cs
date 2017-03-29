@@ -107,7 +107,7 @@
                     Campaign = p.Campaign,
                     User = p.User,
                     SharesOwned = p.SharesOwned,
-                    MakeOffer = p.MakeOffer,
+                    MakeOffer = p.OfferedPrice,
                     Status = p.Status
                 })
                 .ToList();

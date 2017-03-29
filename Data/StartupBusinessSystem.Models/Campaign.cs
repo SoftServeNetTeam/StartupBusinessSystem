@@ -11,7 +11,6 @@
 
         public Campaign()
         {
-            //this.UnitPerShare = this.GoalPrice / this.Shares;
             this.participations = new HashSet<Participation>();
             this.CreatedOn = DateTime.Now;
         }
@@ -29,7 +28,7 @@
         public int GoalPrice { get; set; }
 
         [Range(0, int.MaxValue)]
-        public int CurrentShares { get; set; }
+        public int AvailableShares { get; set; }
 
         [Range(0, int.MaxValue)]
         public int TotalShares { get; set; }

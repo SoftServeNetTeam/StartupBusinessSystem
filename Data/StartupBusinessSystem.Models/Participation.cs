@@ -13,11 +13,11 @@
         [Key]
         public int Id { get; set; }
 
-        public ParticipationStatus Status { get; set; }
-
-        public int MakeOffer { get; set; }
+        public int OfferedPrice { get; set; }
 
         public int SharesOwned { get; set; }
+
+        public ParticipationStatus Status { get; set; }
 
         public DateTime CreatedOn { get; private set; }
 

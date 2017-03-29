@@ -35,7 +35,7 @@
             var participationViewModel = new CreateParticipationViewModel
             {
                 Name = campaign.Name,
-                CurrentShares = campaign.CurrentShares,
+                CurrentShares = campaign.AvailableShares,
                 TotalShares = campaign.TotalShares,
                 PricePerShare = campaign.PricePerShare,
                 OwnerName = campaign.User.UserName
@@ -69,7 +69,7 @@
 
             var participation = new Participation
             {
-                MakeOffer = model.MakeOffer,
+                OfferedPrice = model.MakeOffer,
                 Campaign = campaign,
                 User = currentUser,
             };

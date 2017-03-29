@@ -96,7 +96,7 @@
                 Description = model.Description,
                 GoalPrice = model.GoalPrice,
                 TotalShares = model.Shares,
-                CurrentShares = model.Shares
+                AvailableShares = model.Shares
             };
 
             this.campaigns.Add(campaign);
@@ -130,7 +130,7 @@
                 CompanyAddress = campaign.User.Address,
                 CompanyEmail = campaign.User.Email,
                 CompanyPhone = campaign.User.PhoneNumber,
-                CampaignCurrentShares = campaign.CurrentShares,
+                CampaignCurrentShares = campaign.AvailableShares,
                 CampaignTotalShares = campaign.TotalShares,
                 Owner = campaign.User
             };
@@ -188,9 +188,9 @@
                     Id = p.Id,
                     CreatedOn = p.CreatedOn,
                     Status = p.Status,
-                    MakeOffer = p.MakeOffer,
+                    MakeOffer = p.OfferedPrice,
                     CompanyName = p.User.UserName,
-                    OfferedShares = p.MakeOffer,
+                    OfferedShares = p.OfferedPrice,
                     ParticipationCreatorId = p.User.Id
                 })
                 .ToList();
@@ -231,7 +231,7 @@
 
             if (model.isAccepted == true)
             {
-                if (model.SharesGivenToUser > participation.MakeOffer)
+                if (model.SharesGivenToUser > participation.OfferedPrice)
                 {
                     return this.PartialView("Error");
                 }
@@ -242,14 +242,14 @@
                 this.participations.Update(participation);
                 this.participations.SaveChanges();
 
-                campaign.CurrentShares -= model.SharesGivenToUser;
+                campaign.AvailableShares -= model.SharesGivenToUser;
 
-                if (campaign.CurrentShares < 0)
+                if (campaign.AvailableShares < 0)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                if (campaign.CurrentShares == 0)
+                if (campaign.AvailableShares == 0)
                 {
                     campaign.Status = CampaignStatus.Finished;
                 }

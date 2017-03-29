@@ -19,28 +19,16 @@
             this.participations = new HashSet<Participation>();
         }
 
-        [MaxLength(15)]
         [MinLength(9)]
+        [MaxLength(15)]
         public string CompanyIdentityNumber { get; set; }
+
+        [MaxLength(320)]
+        public string Description { get; set; }
 
         [Required]
         [MaxLength(100)]
         public string Address { get; set; }
-
-        [MaxLength(250)]
-        public string Description { get; set; }
-
-        public virtual ICollection<Participation> Participations
-        {
-            get
-            {
-                return this.participations;
-            }
-            set
-            {
-                this.participations = value;
-            }
-        }
 
         public virtual ICollection<Campaign> Campaigns
         {
@@ -51,6 +39,18 @@
             set
             {
                 this.campaigns = value;
+            }
+        }
+
+        public virtual ICollection<Participation> Participations
+        {
+            get
+            {
+                return this.participations;
+            }
+            set
+            {
+                this.participations = value;
             }
         }
 
