@@ -13,8 +13,13 @@ a:hover {
     color: #171B65;
 }
 
+.navbar-brand{
+    font-size:20px;
+}
+
 .navbar{
     margin-bottom: 0;
+    font-size:18px;
 }
 
 .navbar .container{
@@ -27,6 +32,7 @@ a:hover {
 
 .dropdown-menu > li > a{
     color: #00B9D9;
+    font-size: 18px;
 }
 
 .dropdown-menu > li > a:hover {
@@ -47,6 +53,43 @@ a:hover {
 
 .sideicon .fa {
     font-size: 10em;
+}
+
+.panel-info {
+    border: 2px #171B65 solid;
+}
+
+.panel-info > .panel-heading {
+    border: #171B65;
+    border-bottom: 1px solid;
+    background-color: white;
+}
+
+.panel-title{
+    font-size: 25px;
+    color: #00B9D9;
+}
+
+.description {
+    background-color: #00B9D9;
+    border-bottom-color: #171B65;
+    padding: 12px 50px;
+    font-size: 17px;
+    color: white;
+}
+
+.info {
+    color: #515E65;
+    font-size: 20px;
+}
+
+.prof-info {
+    font-size: 20px;
+}
+
+.page {
+    background-color: #00B9D9;
+    border-color: #171B65;
 }
 
 .footer {

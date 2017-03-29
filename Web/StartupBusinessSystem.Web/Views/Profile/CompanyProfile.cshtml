@@ -9,17 +9,22 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5 jumbotron">
-            <h2>Company Information</h2>
-            <hr/>
-            <p>Name: @Model.CompanyName </p>
-            <p>Identity Number: @Model.CompanyIDNumber</p>
-            <p>Description: @Model.CompanyDescription</p>
-            <p>Address: @Model.CompanyAddress </p>
-            <p>Phone: @Model.CompanyPhone </p>            
-            <p>Email: @Model.CompanyEmail </p>
+        <div class="panel panel-info">
+            <header class="panel-heading">
+                <h2 class="panel-title">
+                    Company Information
+                </h2>
+            </header>
+            <div class="panel-body prof-info">
+                <p>Name: @Model.CompanyName </p>
+                <p>Identity Number: @Model.CompanyIDNumber</p>
+                <p>Description: @Model.CompanyDescription</p>
+                <p>Address: @Model.CompanyAddress </p>
+                <p>Phone: @Model.CompanyPhone </p>
+                <p>Email: @Model.CompanyEmail </p>
+                <a href="/Profile/Edit/" class="btn btn-default description">Edit Details</a>
+            </div>
+            
         </div>
     </div>
-</div>
 
-<a href="/Profile/Edit/" class="btn btn-default">Edit Details</a>

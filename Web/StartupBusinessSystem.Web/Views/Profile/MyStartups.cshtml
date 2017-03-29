@@ -7,19 +7,19 @@
     <div class="row">
         @foreach (var campaign in Model.CampaignsList)
         {
-            <div class="jumbotron col-lg-12">
-                <article>
-                    <header>
-                        <h2>                        
-                            @campaign.Name
-                        </h2>
-                    </header>
+          <div class="panel panel-info">
+            <header class="panel-heading">
+                <h2 class="panel-title">
+                    @campaign.Name
+                </h2>
+            </header>
+            <div class="panel-body prof-info">                    
                     <p>Status: @campaign.Status</p>
                     <p>Goal Price: @campaign.GoalPrice</p>
                     <p>Created On: @campaign.CreatedOn.Day.@campaign.CreatedOn.Month.@campaign.CreatedOn.Year</p>
-                    @Html.ActionLink("Manage", "Manage", "Campaigns", new { @id = campaign.Id }, new {@class = "btn btn-info"})
-                </article>
+                    @Html.ActionLink("Manage", "Manage", "Campaigns", new { @id = campaign.Id }, new {@class = "btn btn-info description"})              
             </div>
+          </div>
         }
     </div>
 </div>

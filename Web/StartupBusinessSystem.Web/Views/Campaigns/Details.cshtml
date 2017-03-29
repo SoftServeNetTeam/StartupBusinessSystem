@@ -7,33 +7,36 @@
 <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-5 jumbotron">
-            <h2>Startup Information</h2>
-            <hr />
-            <p>Name: @Model.Name</p>
-            <p>Description: @Model.Description </p>
-            <p>Status: @Model.Status </p>
-            <p>Goal price: @Model.GoalPrice</p>
-            <p>Price per share: @Model.UnitPerShare </p>
-            <p>Total shares: @Model.CampaignTotalShares</p>
-            <p>Available shares: @Model.CampaignCurrentShares</p>
-            <div class="progress progress-striped active">
-                <div class="progress-bar" style="width:@(((Model.CampaignTotalShares - Model.CampaignCurrentShares)*100)/Model.CampaignTotalShares)%"></div>
+        <div class="panel panel-info">
+            <header class="panel-heading">
+                <h2 class="panel-title">
+                    Startup Information
+                </h2>
+            </header>
+            <div class="panel-body">
+                <div class="container col-md-9 col-xs-12 info">
+                    <p>Name: @Model.Name</p>
+                    <p>Description: @Model.Description </p>
+                    <p>Status: @Model.Status </p>
+                    <p>Goal price: @Model.GoalPrice</p>
+                    <p>Price per share: @Model.UnitPerShare </p>
+                    <p>Total shares: @Model.CampaignTotalShares</p>
+                    <p>Available shares: @Model.CampaignCurrentShares</p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" style="width:@(((Model.CampaignTotalShares - Model.CampaignCurrentShares)*100)/Model.CampaignTotalShares)%"></div>
+                    </div>
+                    <p>Created on: @Model.CreatedOn </p>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <p>Company information:</p>
+                    <p>Name: @Model.CompanyName </p>
+                    <p>Description: @Model.CompanyDescription</p>
+                    <p>Phone: @Model.CompanyPhone </p>
+                    <p>Address: @Model.CompanyAddress </p>
+                    <p>Email: @Model.CompanyEmail </p>
+                </div>
             </div>
-            <p>Created on: @Model.CreatedOn </p>
-        </div>
-        <div class="col-md-2">
-        </div>
-
-        <div class="col-md-5 jumbotron">
-            <h2>Company Information</h2>
-            <hr />
-            <p>Name: @Model.CompanyName </p>
-            <p>Description: @Model.CompanyDescription</p>
-            <p>Phone: @Model.CompanyPhone </p>
-            <p>Address: @Model.CompanyAddress </p>
-            <p>Email: @Model.CompanyEmail </p>
-        </div>
+        </div> 
     </div>
     @{
         if (!Model.IsOwner(User.Identity.Name) && Model.Status != CampaignStatus.Finished)
