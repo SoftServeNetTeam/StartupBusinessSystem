@@ -1,8 +1,8 @@
 ﻿namespace StartupBusinessSystem.Data.Repositories
 {
     using System;
-    using System.Linq;
     using System.Data.Entity;
+    using System.Linq;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
