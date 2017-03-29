@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My Startup Business System</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")    
-    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -51,11 +51,8 @@
         <footer class="footer">
 
             <p>&copy; @DateTime.Now.Year - My Startup Business System</p>
-        </footer>
-        
+        </footer>       
     </div>
-    
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
