@@ -7,8 +7,7 @@
 <h2>Add new Startup</h2>
 @using (Html.BeginForm("Create", "Campaigns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @Html.AntiForgeryToken()
-    <hr />
+    @Html.AntiForgeryToken()   
     if (!ViewData.ModelState.IsValid)
     {
         <div class="alert alert-danger" role="alert">
