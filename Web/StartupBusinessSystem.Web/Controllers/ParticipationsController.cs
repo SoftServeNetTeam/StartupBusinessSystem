@@ -45,6 +45,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddToCampaign(int id, CreateParticipationViewModel model)
         {
             if (!this.ModelState.IsValid)

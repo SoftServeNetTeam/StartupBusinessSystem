@@ -14,16 +14,11 @@
     [Authorize]
     public class ProfileController : Controller
     {
-        private IRepository<Campaign> campaigns;
-        private IRepository<Participation> participations;
         private IRepository<User> users;
 
-        public ProfileController(IRepository<User> users, IRepository<Campaign> campaigns,
-            IRepository<Participation> participations)
+        public ProfileController(IRepository<User> users)
         {
             this.users = users;
-            this.campaigns = campaigns;
-            this.participations = participations;
         }
 
         [HttpGet]
@@ -68,6 +63,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(EditProfileViewModel model)
         {
             if (!ModelState.IsValid)

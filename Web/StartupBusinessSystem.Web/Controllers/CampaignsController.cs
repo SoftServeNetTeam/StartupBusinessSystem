@@ -4,7 +4,9 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
+
     using StartupBusinessSystem.Data.Repositories;
     using StartupBusinessSystem.Models;
     using StartupBusinessSystem.Web.ViewModels.Campaigns;
@@ -67,6 +69,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateCampaignViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -205,6 +208,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Manage(int id, ManageCampaignViewModel model)
         {
             if (!this.ModelState.IsValid)
