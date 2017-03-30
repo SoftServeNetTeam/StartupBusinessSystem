@@ -86,6 +86,47 @@
         }
 
         [HttpGet]
+        public ActionResult MyStartups(int page = 1, int size = 5)
+        {
+            var currentUserId = this.User.Identity.GetUserId();
+
+            if (currentUserId == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var currentUser = this.users.GetById(currentUserId);
+
+            var campaignsCount = currentUser.Campaigns.Count;
+            var allPagesCount = (int)Math.Ceiling(campaignsCount / (decimal)size);
+
+            var userCampaigns = currentUser
+                .Campaigns
+                .OrderBy(c => c.CreatedOn)
+                .Skip((page - 1) * size)
+                .Take(size)
+                .Select(c => new CampaignViewModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    GoalPrice = c.GoalPrice,
+                    CreatedOn = c.CreatedOn,
+                    Status = c.Status
+                })
+                .ToList();
+
+            var campaignsViewModel = new ListCampaignsViewModel
+            {
+                CurrentPage = page,
+                PagesCount = allPagesCount,
+                PageSize = size,
+                CampaignsList = userCampaigns
+            };
+
+            return this.View(campaignsViewModel);
+        }
+
+        [HttpGet]
         public ActionResult MyParticipations(int page = 1, int size = 5)
         {
             var currentUserId = this.User.Identity.GetUserId();
@@ -117,47 +158,6 @@
             };
 
             return this.View(participationsViewModel);
-        }
-
-        [HttpGet]
-        public ActionResult MyStartups(int page = 1, int size = 5)
-        {
-            var currentUserId = this.User.Identity.GetUserId();
-
-            if (currentUserId == null)
-            {
-                return this.HttpNotFound();
-            }
-
-            var currentUser = this.users.GetById(currentUserId);
-
-            var campaignsCount = currentUser.Campaigns.Count;        
-            var allPagesCount = (int)Math.Ceiling(campaignsCount / (decimal)size);
-
-            var userCampaigns = currentUser
-                .Campaigns
-                .OrderBy(c => c.CreatedOn)
-                .Skip((page - 1) * size)
-                .Take(size)
-                .Select(c => new CampaignViewModel
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    GoalPrice = c.GoalPrice,
-                    CreatedOn = c.CreatedOn,
-                    Status = c.Status
-                })
-                .ToList();
-
-            var campaignsViewModel = new ListCampaignsViewModel
-            {
-                CurrentPage = page,
-                PagesCount = allPagesCount,
-                PageSize = size,
-                CampaignsList = userCampaigns
-            };
-
-            return this.View(campaignsViewModel);
         }
     }
 }
