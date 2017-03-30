@@ -35,7 +35,7 @@
             var companyProfileViewModel = new CompanyProfileViewModel
             {
                 CompanyName = user.UserName,
-                CompanyIDNumber = user.CompanyIdentityNumber,
+                CompanyIdNumber = user.CompanyIdentityNumber,
                 CompanyDescription = user.Description,
                 CompanyAddress = user.Address,
                 CompanyEmail = user.Email,

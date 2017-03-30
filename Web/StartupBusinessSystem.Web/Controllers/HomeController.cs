@@ -6,14 +6,12 @@
     {
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page";
-
-            return View();
+            return this.View();
         }
     }
 }

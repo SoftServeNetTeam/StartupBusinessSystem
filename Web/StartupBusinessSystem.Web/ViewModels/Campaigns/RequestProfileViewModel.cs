@@ -4,7 +4,7 @@
     {
         public string CompanyName { get; set; }
 
-        public string CompanyIDNumber { get; set; }
+        public string CompanyIdNumber { get; set; }
 
         public string CompanyDescription { get; set; }
 

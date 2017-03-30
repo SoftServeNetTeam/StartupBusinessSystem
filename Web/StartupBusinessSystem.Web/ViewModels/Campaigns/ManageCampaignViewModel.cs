@@ -15,7 +15,7 @@
         public int SharesGivenToUser { get; set; }
 
         [Required]
-        public bool isAccepted { get; set; }
+        public bool IsAccepted { get; set; }
 
         public IEnumerable<AcceptParticipationViewModel> AllPendingParticipations { get; set; }
     }

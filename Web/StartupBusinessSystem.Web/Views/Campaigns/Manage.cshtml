@@ -45,17 +45,17 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.isAccepted, "Accept", new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.IsAccepted, "Accept", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.RadioButtonFor(m => m.isAccepted, "true", new { onchange = "makeTextBoxActive(" + item.Id + ")" })
-                @Html.ValidationMessageFor(m => m.isAccepted)
+                @Html.RadioButtonFor(m => m.IsAccepted, "true", new { onchange = "makeTextBoxActive(" + item.Id + ")" })
+                @Html.ValidationMessageFor(m => m.IsAccepted)
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.isAccepted, "Refuse", new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.IsAccepted, "Refuse", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.RadioButtonFor(m => m.isAccepted, "false", new { onchange = "makeTextBoxInactive(" + item.Id + ")" })
-                @Html.ValidationMessageFor(m => m.isAccepted)
+                @Html.RadioButtonFor(m => m.IsAccepted, "false", new { onchange = "makeTextBoxInactive(" + item.Id + ")" })
+                @Html.ValidationMessageFor(m => m.IsAccepted)
             </div>
         </div>
         <div class="form-group">
