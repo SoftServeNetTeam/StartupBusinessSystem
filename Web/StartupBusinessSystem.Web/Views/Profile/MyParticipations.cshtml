@@ -2,31 +2,21 @@
 @{
     ViewBag.Title = "Participation Details";
 }
-
-<br />
 <h2>Participation List</h2>
-<br />
-
-@*<div>
-    <h4>You currently don't participate in any Startup!</h4>
-    <h4>Find your new business at the @Html.ActionLink("All Startups", "All", "Campaigns") page.</h4>
-</div>*@
-
+<br/>
 <div class="container">
     <div class="row">
         @foreach (var participation in Model.ParticipationsList)
         {
-            <div class="panel panel-info">
-                <header class="panel-heading">
-                    <h2 class="panel-title">"@participation.Campaign.Name"</h2>
-                </header>
-                <div class="panel-body prof-info">
-                    <article>
-                        <p>Status: @participation.Status</p>
-                        <p>Offered shares: @participation.OfferedPrice</p>
-                        <p>Shares owned: @participation.SharesOwned</p>
-                    </article>
-                </div>
+            <div class="jumbotron col-lg-12">
+                <article>
+                    <p>
+                        <h2>@participation.Campaign.Name </h2>
+                    </p>
+                    <p>Status: @participation.Status</p>
+                    <p>Offered Shares: @participation.OfferedPrice</p>
+                    <p>Shares Owned: @participation.SharesOwned</p>
+                </article>
             </div>
         }
     </div>

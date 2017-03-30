@@ -3,13 +3,7 @@
     ViewBag.Title = "Manage";
 }
 
-<br />
 <h2>Manage</h2>
-
-@*<div>
-    <p>You currently don't have any pending requests!</p>
-    <p>Check again later!</p>
-</div>*@
 
 @foreach (var item in Model.AllPendingParticipations)
 {
@@ -17,7 +11,7 @@
         Model.ParticipationId = item.Id;
     }
 
-    <div>Company name: "@item.CompanyName"</div>
+    <div>Company name: @item.CompanyName</div>
     <div>Shares offered: @item.OfferedShares</div>
     @Html.ActionLink("View Profile", "CompanyProfile", "Campaigns", new { id = item.ParticipationCreatorId }, null)
 
@@ -57,14 +51,11 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" id="submit-button-@item.Id" class="btn btn-info" value="Submit" />
+                <input type="submit" id="submit-button-@item.Id" class="btn btn-default" value="Submit" />
             </div>
         </div>
     }
 }
-
-<br />
-<br />
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
