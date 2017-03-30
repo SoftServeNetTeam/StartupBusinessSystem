@@ -11,6 +11,7 @@
         public int ParticipationId { get; set; }
 
         [Required]
+        [Display(Name = "Offer back:")]
         public int SharesGivenToUser { get; set; }
 
         [Required]

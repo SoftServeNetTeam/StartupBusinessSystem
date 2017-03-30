@@ -3,8 +3,8 @@
     ViewBag.Title = "Company Profile";
 }
 
+<br />
 <h2>Company Profile</h2>
-
 <br />
 
 <div class="container">
@@ -16,15 +16,14 @@
                 </h2>
             </header>
             <div class="panel-body prof-info">
-                <p>Name: @Model.CompanyName </p>
+                <p>Name: @Model.CompanyName</p>
                 <p>Identity Number: @Model.CompanyIDNumber</p>
                 <p>Description: @Model.CompanyDescription</p>
-                <p>Address: @Model.CompanyAddress </p>
-                <p>Phone: @Model.CompanyPhone </p>
-                <p>Email: @Model.CompanyEmail </p>
-                <a href="/Profile/Edit/" class="btn btn-default description">Edit Details</a>
+                <p>Address: @Model.CompanyAddress</p>
+                <p>Phone: @Model.CompanyPhone</p>
+                <p>E-mail: @Model.CompanyEmail</p>
+                <a href="/Profile/Edit/" class="btn btn-info description">Edit Details</a>
             </div>
-            
         </div>
     </div>
-
+</div>

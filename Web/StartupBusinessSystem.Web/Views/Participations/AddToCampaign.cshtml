@@ -1,10 +1,10 @@
 ﻿@model StartupBusinessSystem.Web.ViewModels.Participations.CreateParticipationViewModel
 @{
-    ViewBag.Title = "AddToCampaign";
+    ViewBag.Title = "Participate To Campaign";
 }
 
 <br />
-<h2 class="text-center">Startup: @Model.Name</h2>
+<h2 class="text-center">Startup: "@Model.Name"</h2>
 <hr />
 
 <div class="container">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <h3>Make offer to @Model.OwnerName</h3>
+                <h3>Make offer to "@Model.OwnerName"</h3>
                 @using (Html.BeginForm("AddToCampaign", "Participations", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-default" id="submit-button" value="Make Offer" />
+                            <input type="submit" class="btn btn-info" id="submit-button" value="Make Offer" />
                         </div>
                     </div>
                 }
@@ -79,7 +79,6 @@
             } else {
                 document.getElementById("submit-button").disabled = false;
             }
-
         }
     </script>
 }

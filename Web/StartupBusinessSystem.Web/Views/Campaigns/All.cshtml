@@ -26,10 +26,10 @@
                     </div>
                     <div class="col-md-3 col-xs-12 info">
                         <p>Status: @campaign.Status</p>
-                        <p>Goal Price: @campaign.GoalPrice</p>
-                        <p>@campaign.CreatedOn.Day.@campaign.CreatedOn.Month.@campaign.CreatedOn.Year</p>
+                        <p>Goal price: @campaign.GoalPrice EUR</p>
+                        <p>Created on: @campaign.CreatedOn.Day.@campaign.CreatedOn.Month.@campaign.CreatedOn.Year</p>
                         <small class="author">
-                            --Created By @campaign.UsernameAsString
+                            --Created By: @campaign.UsernameAsString
                         </small>
                     </div>
                 </div>
@@ -72,4 +72,3 @@
         </ul>
     </nav>
 </div>
-
