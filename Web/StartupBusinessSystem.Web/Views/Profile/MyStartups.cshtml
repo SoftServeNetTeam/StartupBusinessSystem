@@ -2,15 +2,18 @@
 @{
     ViewBag.Title = "My startups";
 }
-
 <br />
 <h2>My Startups</h2>
 <br />
-
-@*<div>
-    <h4>You still haven't added any Startup!</h4>
-    <h4>Go to @Html.ActionLink("Add New Startup", "Create", "Campaigns") page to add a Startup.</h4>
-</div>*@
+@{
+    if (!Model.CampaignsList.Any())
+    {
+        <div>
+            <h4>You still haven't added any Startup!</h4>
+            <h4>Go to @Html.ActionLink("Add New Startup", "Create", "Campaigns") page to add a Startup.</h4>
+        </div>
+    }
+}
 
 <div class="container">
     <div class="row">
@@ -30,7 +33,6 @@
         }
     </div>
 </div>
-
 <div class="text-center">
     <nav aria-label="Page navigation">
         <ul class="pagination ">
@@ -42,7 +44,6 @@
                     </a>
                 </li>
             }
-
             @for (int i = 1; i <= Model.PagesCount; i++)
             {
                 var className = string.Empty;
@@ -55,7 +56,6 @@
                     <a href="/Profile/MyStartups?page=@i">@i</a>
                 </li>
             }
-
             @if (Model.CurrentPage < Model.PagesCount)
             {
                 <li>

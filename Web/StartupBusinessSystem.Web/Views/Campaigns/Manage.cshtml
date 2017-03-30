@@ -2,14 +2,17 @@
 @{
     ViewBag.Title = "Manage";
 }
-
 <br />
 <h2>Manage</h2>
-
-@*<div>
-    <p>You currently don't have any pending requests!</p>
-    <p>Check again later!</p>
-</div>*@
+@{
+    if (!Model.AllPendingParticipations.Any())
+    {
+        <div>
+            <p>You currently don't have any pending requests!</p>
+            <p>Check again later!</p>
+        </div>
+    }
+}
 
 @foreach (var item in Model.AllPendingParticipations)
 {
@@ -62,13 +65,10 @@
         </div>
     }
 }
-
 <br />
 <br />
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
     <script>
         function makeButtonInactive(maxPrice, id) {
             let sum = document.getElementById("text-form-" + id).value;
