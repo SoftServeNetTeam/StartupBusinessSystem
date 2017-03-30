@@ -34,7 +34,7 @@
                     }
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.OfferedPrice, new { @class = "col-md-2 control-label" })
+                        @Html.LabelFor(m => m.OfferedPrice, "Your Offer:", new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
                             @Html.TextBoxFor(m => m.OfferedPrice, new { oninput = "calculate(" + Model.PricePerShare + ", " + Model.AvailableShares + ")", id = "first", @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.OfferedPrice)
@@ -56,6 +56,8 @@
         </div>
     </div>
 </div>
+<br />
+<br />
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

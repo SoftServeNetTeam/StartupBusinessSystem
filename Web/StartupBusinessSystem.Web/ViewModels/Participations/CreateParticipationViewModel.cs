@@ -6,7 +6,7 @@
     {
         public string Name { get; set; }
 
-        [Display(Name = "Your Offer:")]
+        [Display(Name = "Your Offer")]
         public int OfferedPrice { get; set; }
 
         public int AvailableShares { get; set; }

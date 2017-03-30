@@ -2,14 +2,17 @@
 @{
     ViewBag.Title = "Manage";
 }
+
 <br />
 <h2>Manage</h2>
+<br />
+
 @{
     if (!Model.AllPendingParticipations.Any())
     {
         <div>
-            <p>You currently don't have any pending requests!</p>
-            <p>Check again later!</p>
+            <h4>You currently don't have any pending requests!</h4>
+            <h4>Check again later.</h4>
         </div>
     }
 }
@@ -20,8 +23,8 @@
         Model.ParticipationId = item.Id;
     }
 
-    <div>Company name: "@item.CompanyName"</div>
-    <div>Shares offered: @item.OfferedShares</div>
+    <h4>Company name: "@item.CompanyName"</h4>
+    <h4>Shares offered: @item.OfferedShares</h4>
     @Html.ActionLink("View Profile", "CompanyProfile", "Campaigns", new { id = item.ParticipationCreatorId }, null)
 
     using (Html.BeginForm("Manage", "Campaigns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -67,6 +70,7 @@
 }
 <br />
 <br />
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
