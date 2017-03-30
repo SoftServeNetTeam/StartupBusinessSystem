@@ -4,8 +4,8 @@
 namespace StartupBusinessSystem.Web.App_Start
 {
     using System;
-    using System.Web;
     using System.Data.Entity;
+    using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -15,20 +15,20 @@ namespace StartupBusinessSystem.Web.App_Start
     using Data;
     using Data.Repositories;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -36,7 +36,7 @@ namespace StartupBusinessSystem.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -67,6 +67,6 @@ namespace StartupBusinessSystem.Web.App_Start
         {
             kernel.Bind<DbContext>().To<StartupBusinessDbContext>().InRequestScope();
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
-        }        
+        }
     }
 }
