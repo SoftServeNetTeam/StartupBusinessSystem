@@ -3,8 +3,11 @@
 @{
     ViewBag.Title = "Details";
 }
+
+<br />
 <h2>Details</h2>
 <br />
+
 <div class="container">
     <div class="row">
         <div class="panel panel-info">
@@ -16,33 +19,35 @@
             <div class="panel-body">
                 <div class="container col-md-9 col-xs-12 info">
                     <p>Name: @Model.Name</p>
-                    <p>Description: @Model.Description </p>
-                    <p>Status: @Model.Status </p>
-                    <p>Goal price: @Model.GoalPrice</p>
-                    <p>Price per share: @Model.UnitPerShare </p>
+                    <p>Description: @Model.Description</p>
+                    <p>Goal price: @Model.GoalPrice EUR</p>
+                    <p>Price per share: @Model.UnitPerShare EUR</p>
                     <p>Total shares: @Model.CampaignTotalShares</p>
                     <p>Available shares: @Model.CampaignAvailableShares</p>
+                    <p>Progress:</p>
                     <div class="progress progress-striped active">
                         <div class="progress-bar" style="width:@(((Model.CampaignTotalShares - Model.CampaignAvailableShares)*100)/Model.CampaignTotalShares)%"></div>
                     </div>
+                    <p>Status: @Model.Status </p>
                     <p>Created on: @Model.CreatedOn </p>
                 </div>
                 <div class="col-md-3 col-xs-12">
                     <p>Company information:</p>
                     <p>Name: @Model.CompanyName </p>
                     <p>Description: @Model.CompanyDescription</p>
-                    <p>Phone: @Model.CompanyPhone </p>
                     <p>Address: @Model.CompanyAddress </p>
-                    <p>Email: @Model.CompanyEmail </p>
+                    <p>Phone: @Model.CompanyPhone </p>
+                    <p>E-mail: @Model.CompanyEmail </p>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     @{
         if (!Model.IsOwner(User.Identity.Name) && Model.Status != CampaignStatus.Finished)
         {
-            <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-default"> Participate </a>
+            <a href="/Participations/AddToCampaign/@Model.Id" class="btn btn-info description">Participate</a>
         }
     }
-  
+    <br />
+    <br />
 </div>
