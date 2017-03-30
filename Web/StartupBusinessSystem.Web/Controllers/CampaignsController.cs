@@ -133,7 +133,7 @@
                 CompanyAddress = campaign.User.Address,
                 CompanyEmail = campaign.User.Email,
                 CompanyPhone = campaign.User.PhoneNumber,
-                CampaignCurrentShares = campaign.AvailableShares,
+                CampaignAvailableShares = campaign.AvailableShares,
                 CampaignTotalShares = campaign.TotalShares,
                 Owner = campaign.User
             };
@@ -191,7 +191,7 @@
                     Id = p.Id,
                     CreatedOn = p.CreatedOn,
                     Status = p.Status,
-                    MakeOffer = p.OfferedPrice,
+                    OfferedPrice = p.OfferedPrice,
                     CompanyName = p.User.UserName,
                     OfferedShares = p.OfferedPrice,
                     ParticipationCreatorId = p.User.Id

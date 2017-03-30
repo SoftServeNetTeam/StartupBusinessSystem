@@ -9,10 +9,10 @@
         [MaxLength(250)]
         public string CompanyDescription { get; set; }
 
-        public string CompanyPhone { get; set; }
-
         [Required]
         [MaxLength(100)]
         public string CompanyAddress { get; set; }
+
+        public string CompanyPhone { get; set; }
     }
 }

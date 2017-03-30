@@ -21,9 +21,9 @@
                     <p>Goal price: @Model.GoalPrice</p>
                     <p>Price per share: @Model.UnitPerShare </p>
                     <p>Total shares: @Model.CampaignTotalShares</p>
-                    <p>Available shares: @Model.CampaignCurrentShares</p>
+                    <p>Available shares: @Model.CampaignAvailableShares</p>
                     <div class="progress progress-striped active">
-                        <div class="progress-bar" style="width:@(((Model.CampaignTotalShares - Model.CampaignCurrentShares)*100)/Model.CampaignTotalShares)%"></div>
+                        <div class="progress-bar" style="width:@(((Model.CampaignTotalShares - Model.CampaignAvailableShares)*100)/Model.CampaignTotalShares)%"></div>
                     </div>
                     <p>Created on: @Model.CreatedOn </p>
                 </div>

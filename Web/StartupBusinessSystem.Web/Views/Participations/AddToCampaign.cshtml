@@ -13,9 +13,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2>Available Shares @Model.CurrentShares from @Model.TotalShares</h2>
+                        <h2>Available Shares @Model.AvailableShares from @Model.TotalShares</h2>
                         <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-danger" style="width:@((Model.CurrentShares*100)/Model.TotalShares)%"></div>
+                            <div class="progress-bar progress-bar-danger" style="width:@((Model.AvailableShares*100)/Model.TotalShares)%"></div>
                         </div>
                     </div>
                 </div>
@@ -34,10 +34,10 @@
                     }
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.MakeOffer, new { @class = "col-md-2 control-label" })
+                        @Html.LabelFor(m => m.OfferedPrice, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.MakeOffer, new { oninput = "calculate(" + Model.PricePerShare + ", " + Model.CurrentShares + ")", id = "first", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.MakeOffer)
+                            @Html.TextBoxFor(m => m.OfferedPrice, new { oninput = "calculate(" + Model.PricePerShare + ", " + Model.AvailableShares + ")", id = "first", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.OfferedPrice)
                         </div>
                     </div>
                     <div class="form-group">

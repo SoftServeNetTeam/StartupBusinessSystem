@@ -15,23 +15,23 @@
 
         public int Shares { get; set; }
 
+        public int UnitPerShare { get; set; }
+
         public CampaignStatus Status { get; set; }
 
         public DateTime CreatedOn { get; set; }
-
-        public int UnitPerShare { get; set; }
 
         public string CompanyName { get; set; }
 
         public string CompanyDescription { get; set; }
 
+        public string CompanyAddress { get; set; }
+
         public string CompanyPhone { get; set; }
 
         public string CompanyEmail { get; set; }
 
-        public string CompanyAddress { get; set; }
-
-        public int CampaignCurrentShares { get; set; }
+        public int CampaignAvailableShares { get; set; }
 
         public int CampaignTotalShares { get; set; }
 
@@ -41,6 +41,5 @@
         {
             return this.Owner.UserName.Equals(name);
         }
-
     }
 }

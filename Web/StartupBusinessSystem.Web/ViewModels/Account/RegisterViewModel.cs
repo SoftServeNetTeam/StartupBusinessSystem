@@ -13,22 +13,22 @@
         [Display(Name = "ID Number")]
         public string CompanyIdentityNumber { get; set; }
 
+        [MaxLength(250)]
+        [Display(Name = "Company Description")]
+        public string Description { get; set; }
+
         [Required]
         [MaxLength(100)]
-        [Display(Name = "Company Address")]
+        [Display(Name = "Address")]
         public string Address { get; set; }
+
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
-
-        [Display(Name = "Phone")]
-        public string Phone { get; set; }
-
-        [MaxLength(250)]
-        [Display(Name = "Company Description")]
-        public string Description { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
