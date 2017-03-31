@@ -3,7 +3,8 @@
 <p>The purpose of the Startup Business System is to provide the financing of a given startup.
 The owner of a startup offers other companies to participate in the financing of his startup. In return the buyer receives the corresponding amount of shares from the startup.
 </p>
-<strong>Business logic</strong>
+<strong>Business logic:</strong>
+<br/>
 <ul>
 <li>The Startup Business System is intended to be used by business organizations (international companies)</li>
 <li>Each company can create and offer to the others many startups</li>
