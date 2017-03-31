@@ -244,15 +244,15 @@
                 participation.Status = ParticipationStatus.Accepted;
                 participation.SharesOwned = model.SharesGivenToUser;
 
-                this.participations.Update(participation);
-                this.participations.SaveChanges();
-
                 campaign.AvailableShares -= model.SharesGivenToUser;
 
                 if (campaign.AvailableShares < 0)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
+
+                this.participations.Update(participation);
+                this.participations.SaveChanges();
 
                 if (campaign.AvailableShares == 0)
                 {

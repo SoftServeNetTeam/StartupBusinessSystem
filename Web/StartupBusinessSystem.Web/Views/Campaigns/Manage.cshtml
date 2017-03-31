@@ -19,9 +19,8 @@
 
 @foreach (var item in Model.AllPendingParticipations)
 {
-    {
-        Model.ParticipationId = item.Id;
-    }
+    Model.ParticipationId = item.Id;
+    var priceToCheck = Math.Min(item.AvailableShares, item.OfferedShares);
 
     <h4>Company name: "@item.CompanyName"</h4>
     <h4>Shares offered: @item.OfferedShares</h4>
@@ -44,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.SharesGivenToUser, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.SharesGivenToUser, new { oninput = "makeButtonInactive(" + item.OfferedShares + ", " + item.Id + ")", id = "text-form-" + @item.Id, @class = "form-control" })
+                @Html.TextBoxFor(m => m.SharesGivenToUser, new { Value = "", oninput = "makeButtonInactive(" + priceToCheck + ", " + item.Id + ")", id = "text-form-" + @item.Id, @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SharesGivenToUser)
             </div>
         </div>
