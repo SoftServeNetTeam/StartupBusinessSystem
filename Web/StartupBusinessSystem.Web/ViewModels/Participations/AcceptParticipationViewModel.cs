@@ -12,6 +12,8 @@
 
         public int OfferedShares { get; set; }
 
+        public int AvailableShares { get; set; }
+
         public ParticipationStatus Status { get; set; }
 
         public DateTime CreatedOn { get; set; }

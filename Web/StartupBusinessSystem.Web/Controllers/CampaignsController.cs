@@ -192,6 +192,7 @@
                     CreatedOn = p.CreatedOn,
                     Status = p.Status,
                     OfferedPrice = p.OfferedPrice,
+                    AvailableShares = p.Campaign.AvailableShares,
                     CompanyName = p.User.UserName,
                     OfferedShares = p.OfferedPrice,
                     ParticipationCreatorId = p.User.Id
