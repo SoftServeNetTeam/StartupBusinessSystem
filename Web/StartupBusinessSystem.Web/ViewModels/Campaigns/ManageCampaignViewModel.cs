@@ -11,7 +11,8 @@
         public int ParticipationId { get; set; }
 
         [Required]
-        [Display(Name = "Offer back")]
+        [Range(1, int.MaxValue)]
+        [Display(Name = "Offer Back")]
         public int SharesGivenToUser { get; set; }
 
         [Required]

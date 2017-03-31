@@ -10,11 +10,11 @@
         [MaxLength(300)]
         public string Description { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(10, int.MaxValue)]
         [Display(Name = "Goal Price")]
         public int GoalPrice { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(5, int.MaxValue)]
         public int Shares { get; set; }
     }
 }
