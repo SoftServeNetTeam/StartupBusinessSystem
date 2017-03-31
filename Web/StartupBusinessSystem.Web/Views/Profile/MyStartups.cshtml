@@ -29,6 +29,7 @@
                     <p>Status: @campaign.Status</p>
                     <p>Goal price: @campaign.GoalPrice EUR</p>
                     <p>Created on: @campaign.CreatedOn.Day.@campaign.CreatedOn.Month.@campaign.CreatedOn.Year</p>
+                    <hr/>
                     @Html.ActionLink("Manage", "Manage", "Campaigns", new { @id = campaign.Id }, new { @class = "btn btn-info description" })
                 </div>
             </div>
